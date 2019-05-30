@@ -91,4 +91,34 @@ public class EducationCompany extends ServiceCompany{
     public void setTotalActiveStudents (int totalActiveStudents) {
 	     this.totalActiveStudents = totalActiveStudents;
 	}
+
+	/**
+    * This method calculates proculture tax <br>
+
+    * <b>pre:</b> activeStudents1and2 is initilized, activeStudents1and2 != null <br>
+
+    * <b>post:</b> Proculture tax has been calculated <br>
+
+    * @return String The method returns a message with the information of the tax <br>
+    */
+
+    public String procultureTax (){
+
+    	double procultureTax = 0;
+    	String msg = "";
+
+    	procultureTax = 20-(activeStudents1and2/100);
+
+    	if (procultureTax < 0){
+
+    		msg = "La empresa no debe pagar el impuesto";
+    	}
+
+    	else {
+
+    		msg = ("El porcentaje de impuesto a pagar es de " + procultureTax);
+    	}
+
+    return msg;
+    }
 }

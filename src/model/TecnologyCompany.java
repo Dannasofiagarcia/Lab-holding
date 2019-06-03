@@ -21,10 +21,11 @@ public class TecnologyCompany extends ServiceCompany implements NaturalResource{
 
 	//Constructor
 
-	public TecnologyCompany (String nameCompany, String nit, String correspondanceDirection, int phoneNumber, int quantityEmployees, double activeValue, String companyType, String nameLR, Time dateConstitution, String service){
+	public TecnologyCompany (String nameCompany, String nit, String correspondanceDirection, int phoneNumber, int quantityEmployees, double activeValue, String companyType, String nameLR, Time dateConstitution, String service, double energy){
 		
 		super(nameCompany, nit, correspondanceDirection, phoneNumber, quantityEmployees, activeValue, companyType, nameLR, dateConstitution);
 		this.service = service;
+		this.energy = energy;
 	}
 
 	//Metodos
@@ -37,13 +38,19 @@ public class TecnologyCompany extends ServiceCompany implements NaturalResource{
 	     this.service = service;
 	}
 
+	public double getEnergy(){
+		 return energy;
+	}
+
+    public void setEnergy (double energy) {
+	     this.energy = energy;
+	}
+
 
 	/**
     * This method calculate how many trees company has to sembrate <br>
 
-    * <b>pre:</b> waterQuantity is initialized, waterQuantity != null <br>
-
-    * <b>pre:</b> products is initialized, products != null <br>
+    * <b>pre:</b> energy is initialized, energy != null <br>
 
     * <b>post:</b> It has been calculate how many trees company should sembrate <br>
 

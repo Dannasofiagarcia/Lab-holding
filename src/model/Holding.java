@@ -4,6 +4,10 @@ import java.util.*;
 
 public class Holding implements HaulBuilding{
 
+	//Atributos
+
+	private String name;
+
 	//Relaciones
 
 	private ArrayList<Company> companies;
@@ -17,6 +21,8 @@ public class Holding implements HaulBuilding{
 	}
 
 	//Metodos
+
+
 
 	public String haulEmail(String chargeEmployeed){
 

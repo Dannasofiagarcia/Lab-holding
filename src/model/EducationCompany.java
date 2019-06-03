@@ -2,7 +2,7 @@ package model;
 
 import java.util.*;
 
-public class EducationCompany extends ServiceCompany{
+public class EducationCompany extends ServiceCompany implements ProcultureTax{
 
 	//Constantes
 

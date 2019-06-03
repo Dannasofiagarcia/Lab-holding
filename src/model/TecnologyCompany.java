@@ -2,7 +2,7 @@ package model;
 
 import java.util.*;
 
-public class TecnologyCompany extends ServiceCompany{
+public class TecnologyCompany extends ServiceCompany implements NaturalResource{
 
 	//Constantes
 
@@ -16,6 +16,7 @@ public class TecnologyCompany extends ServiceCompany{
 	//Atributos
 
 	private String service;
+	private double energy;
 
 
 	//Constructor
@@ -37,4 +38,40 @@ public class TecnologyCompany extends ServiceCompany{
 	}
 
 
-}
+	/**
+    * This method calculate how many trees company has to sembrate <br>
+
+    * <b>pre:</b> waterQuantity is initialized, waterQuantity != null <br>
+
+    * <b>pre:</b> products is initialized, products != null <br>
+
+    * <b>post:</b> It has been calculate how many trees company should sembrate <br>
+
+    * @return String The method return a message with the information of how many trees company should sembrate <br>
+    */
+
+	public String naturalResourceXtree(){
+
+		int valueToPay = 0;
+		String msg = "";
+
+		if (energy >= 1 && energy < 1000 ){
+			valueToPay = 8;
+			msg = ("Los arboles que la empresa debe sembrar son " + valueToPay);
+		}
+
+		else if (energy > 1001 && energy < 3000){
+			valueToPay = 35;
+			msg = ("Los arboles que la empresa debe sembrar son " + valueToPay);
+		}
+
+		else if (energy > 3000){
+			valueToPay = 500;
+			msg = ("Los arboles que la empresa debe sembrar son " + valueToPay);
+		}
+
+		return msg;
+	}
+
+
+}//Cierra la clase

@@ -11,10 +11,6 @@ public class Product{
 	private double waterQuantity;
 	private int unitsInventory;
 
-	//Relaciones
-
-	private Invima regulatoryInformation;
-
 	//Constructor
 
 	public Product (String name, String code, double waterQuantity, int unitsInventory, Invima regulatoryInformation){

@@ -21,7 +21,7 @@ public class Building{
 	public void cubliclesInitilized(){
 
 		for(int f = 0; f < cublicles.length; f++){
-			for (int c = 0; f <cublicles[0].length; c++){
+			for (int c = 0; c <cublicles[0].length; c++){
 
 				cublicles[f][c] = new Cublicle(80 + f + c, false);
 			}

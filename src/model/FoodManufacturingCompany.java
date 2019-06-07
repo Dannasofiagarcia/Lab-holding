@@ -1,31 +1,23 @@
 package model;
 
-import java.util.*;
-
-public class MedicineManufacturingCompany extends ManufacturingCompany implements NaturalResource{ 
-
-	//Constantes
-
-	public final static String CURRENT = "Current";
-	public final static String NOT_RENEWED = "Not renewed";
-	public final static String MANUFACTURING_EXPORTING = "Manufacturing and exporting";
-	public final static String MANUFACTURING_SELLING = "Manufacturing and selling";
-	public final static String IMPORT_SELL = "Import and sell";
-
-
-	//Atributos
+public class FoodManufacturingCompany{
+	
+	 //Atributos
 
 	private String healthRegister;
 	private String status;
 	private int dueMonth;
 	private int dueYear;
 	private String mode;
+	private int elaborationMonth;
+	private int elaborationYear;
+	private String comercialBrandName;
 
 
 	//Constructor
 
-	public MedicineManufacturingCompany (String nameCompany, String nit, String correspondanceDirection, int phoneNumber, int quantityEmployees, double activeValue, String companyType, String nameLR, Time dateConstitution,
-										 String healthRegister, String status, int dueMonth, int dueYear, String mode){
+	public ManufacturingCompany (String nameCompany, String nit, String correspondanceDirection, int phoneNumber, int quantityEmployees, double activeValue, String companyType, String nameLR, Time dateConstitution,
+								 String healthRegister, String status, int dueMonth, int dueYear, String mode, int eleaborationMonth, int elaborationYear, String comercialBrandName){
 		
 		super(nameCompany, nit, correspondanceDirection, phoneNumber, quantityEmployees, activeValue, companyType, nameLR, dateConstitution);
 		this.healthRegister = healthRegister;
@@ -33,8 +25,11 @@ public class MedicineManufacturingCompany extends ManufacturingCompany implement
 		this.dueMonth = dueMonth;
 		this.dueYear = dueYear;
 		this.mode = mode;
-
+		this.elaborationMonth = elaborationMonth;
+		this.elaborationYear = elaborationYear;
+		this.comercialBrandName = comercialBrandName;
 	}
+
 
 	//Metodos
 
@@ -191,49 +186,93 @@ public class MedicineManufacturingCompany extends ManufacturingCompany implement
 
 
 	/**
-    * This method calculate how many trees company has to sembrate <br>
+    * This method return the elaboration month of the company <br>
 
-    * <b>pre:</b> waterQuantity is initialized, waterQuantity != null <br>
+    * <b>pre:</b> elaborationMonth is initilized, elaborationMonth != null <br>
 
-    * <b>pre:</b> products is initialized, products != null <br>
+    * <b>post:</b> elaborationMonth was returned <br>
 
-    * <b>post:</b> It has been calculate how many trees company should sembrate <br>
-
-    * @return String The method return a message with the information of how many trees company should sembrate <br>
+    * @return int The method return the elaboration month of the company<br>
     */
 
-	public String naturalResourceXtree(){
-
-		String msg = "";
-		int valueToPay = 0;
-		double waterQuantity = 0;
-
-		for (int i = 0; i < getProducts().size(); i++){
-			waterQuantity += getProducts().get(i).getWaterQuantity();
-		}
-
-		if(waterQuantity >= 1.0 && waterQuantity <= 140.0){
-
-			valueToPay = 6;
-			msg = ("Los arboles que la empresa debe sembrar son " + valueToPay);
-		} 
-
-		else if (waterQuantity >= 141.0 && waterQuantity <= 800.0){
-
-			valueToPay = 25;
-			msg = ("Los arboles que la empresa debe sembrar son " + valueToPay);
-		}
-
-		else if (waterQuantity > 800.0){
-
-			valueToPay = 200;
-			msg = ("Los arboles que la empresa debe sembrar son " + valueToPay);
-		}
-
-		return msg;
+	public int getElaborationMonth(){
+		 return elaborationMonth;
 	}
 
-}//Cierra la clase
 
- 
+	/**
+    * This method set the elaboration month of the company <br>
 
+    * <b>pre:</b> elaborationMonth is initilized, elaborationMonth != null <br>
+
+    * <b>post:</b> elaborationMonth was changed <br>
+
+    * @param elaborationMonth Is the new elaboration month of the company<br>
+    */
+
+	public void setElaborationMonth (int elaborationMonth) {
+	     this.elaborationMonth = elaborationMonth;
+	}
+
+
+	/**
+    * This method return the elaboration year of the company <br>
+
+    * <b>pre:</b> elaborationYear is initilized, elaborationYear != null <br>
+
+    * <b>post:</b> elaborationYear was returned <br>
+
+    * @return int The method return the elaboration year of the company<br>
+    */
+
+	public int getElaborationYear(){
+		 return elaborationYear;
+	}
+
+
+	/**
+    * This method set the elaboration year of the company <br>
+
+    * <b>pre:</b> elaborationYear is initilized, elaborationYear != null <br>
+
+    * <b>post:</b> elaborationYear was changed <br>
+
+    * @param elaborationYear Is the new year elaboration of the company<br>
+    */
+
+	public void setElaborationYear (int elaborationYear) {
+	     this.elaborationYear = elaborationYear;
+	}
+
+
+	/**
+    * This method return the name of the comercial brand of the company <br>
+
+    * <b>pre:</b> comercialBrandName is initilized, comercialBrandName != null <br>
+
+    * <b>post:</b> comercialBrandName was returned <br>
+
+    * @return int The method return the name of the comercial brand of the company<br>
+    */
+
+	public String getComercialBrandName(){
+		 return comercialBrandName;
+	}
+
+
+	/**
+    * This method set the name of the comercial brand of the company <br>
+
+    * <b>pre:</b> comercialBrandName is initilized, comercialBrandName != null <br>
+
+    * <b>post:</b> comercialBrandName was changed <br>
+
+    * @param comercialBrandName Is the new name of the comercial brand<br>
+    */
+
+	public void setComercialBrandName (String comercialBrandName) {
+	     this.comercialBrandName = comercialBrandName;
+	}
+
+
+}

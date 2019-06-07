@@ -30,17 +30,60 @@ public class TecnologyCompany extends ServiceCompany implements NaturalResource{
 
 	//Metodos
 
+	/**
+    * This method return service of the company <br>
+
+    * <b>pre:</b> service is initilized, service != null <br>
+
+    * <b>post:</b> service was returned <br>
+
+    * @return String The method returns service of the company<br>
+    */
+
 	public String getService(){
 		 return service;
 	}
+
+
+	/**
+    * This method set service of the company <br>
+
+    * <b>pre:</b> service is initilized, service != null <br>
+
+    * <b>post:</b> service was changed <br>
+
+    * @param service Is the new service<br>
+    */
 
     public void setService (String service) {
 	     this.service = service;
 	}
 
+
+	/**
+    * This method return the quantity of energy of the company <br>
+
+    * <b>pre:</b> energy is initilized, energy != null <br>
+
+    * <b>post:</b> energy was returned <br>
+
+    * @return String The method returns the quantity of energy of the company<br>
+    */
+
 	public double getEnergy(){
 		 return energy;
 	}
+
+
+	/**
+    * This method set the quantity of energy of the company <br>
+
+    * <b>pre:</b> energy is initilized, energy != null <br>
+
+    * <b>post:</b> energy was changed <br>
+
+    * @param energy Is the new quantity of energy<br>
+    */
 
     public void setEnergy (double energy) {
 	     this.energy = energy;

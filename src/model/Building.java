@@ -18,12 +18,21 @@ public class Building{
 
 	//Metodos
 
+	/**
+    * This method initialized the cublicles of building<br>
+
+    * <b>post:</b> The cubicles get initialized with extension and availability <br>
+
+    */
+
 	public void cubliclesInitilized(){
 
 		for(int f = 0; f < cublicles.length; f++){
-			for (int c = 0; c <cublicles[0].length; c++){
+			for (int c = 0; c < cublicles[0].length; c++){
 
-				cublicles[f][c] = new Cublicle(80 + f + c, false);
+				//false para cuando estan ocupados, true para cuando estan vacios
+
+				cublicles[f][c] = new Cublicle(80 + f + c, true);
 			}
 		}
 	}
@@ -37,9 +46,31 @@ public class Building{
 		cubliclesInitilized();
 	}
 
+
+	/**
+    * This method return matrix cublicles<br>
+
+    * <b>pre:</b> cublicles is initialized, cublicles != null <br>
+
+    * <b>post:</b> cublicles was returned <br>
+
+    * @return Cublicle[][] The method return matrix cublicles <br>
+    */
+
 	public Cublicle[][] getCublicles(){
 		 return cublicles;
 	}
+
+	/**
+    * This method set matrix cublicles<br>
+
+    * <b>pre:</b> cublicles is initialized, cublicles != null <br>
+
+    * <b>post:</b> cublicles was changed <br>
+
+    * @param cublicles Is the new cublicle <br>
+
+    */
 
     public void setCublicles (Cublicle[][] cublicles) {
 	     this.cublicles = cublicles;

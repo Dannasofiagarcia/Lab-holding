@@ -15,12 +15,18 @@ public class Holding implements HaulBuilding{
 	
 	//Constructor
 
-	public Holding (){
+	public Holding (String name){
 
+		this.name = name;
 		companies = new ArrayList<Company>();
 	}
 
 	//Metodos
+
+
+	public void addCompanies(Company company){
+		companies.add(company);
+	}
 
 	/**
     * This method return the name of the holding <br>
@@ -373,6 +379,184 @@ public class Holding implements HaulBuilding{
 	}
 
 
-	public
-    
+	/**
+    * This method register a poll <br>
+
+    * <b>pre:</b> companies is initialized, companies != null <br>
+
+    * <b>post:</b> The poll was register <br>
+
+    * @param nameCompany Is the name of the company we are looking for <br>
+
+    * @param answer1 Is the answer of the poll that user selected <br>
+
+    * @param answer2 Is the answer of the poll that user selected <br>
+
+    * @param answer3 Is the answer of the poll that user selected <br>
+
+    * @return String The method return a message with information of the register <br>
+    */
+
+
+	public String realizeAPoll(String nameCompany, int answer1, int answer2, int answer3){
+
+		String msg = "";
+
+		for(int i = 0; i < companies.size(); i++){
+			if(companies.get(i).getNameCompany().equals(nameCompany)){
+				if(companies.get(i) instanceof ServiceCompany){
+					if(answer1 >= 1 && answer1 <= 5 && answer2 >= 1 && answer2 <= 5 && answer3 >= 1 && answer3 <= 5){
+						ServiceCompany sc = (ServiceCompany) companies.get(i);
+						Poll poll = new Poll (answer1, answer2, answer3);
+						sc.addPoll(poll);
+						poll.setAnswer1(answer1);
+						poll.setAnswer2(answer2);
+						poll.setAnswer3(answer3);
+						msg = "Se ha agregado con exito la encuesta a la compañia " + companies.get(i).getNameCompany();
+					}
+
+					else {
+						msg = "Las respuestas deben estar entre 1 y 5, registre de nuevo la encuesta";
+					}
+				}
+
+				else {
+					msg = "La compañia ingresada no es de servicios, por lo tanto no requiere hacer la encuesta de satisfaccion";
+				}
+			}
+
+			else {
+				msg = "Ninguna compañia registrada coincide con el nombre ingresado";
+			}
+		}
+
+		return msg;
+	}
+
+
+	/**
+    * This method calculate average satisfaction of service company <br>
+
+    * <b>pre:</b> companies is initialized, companies != null <br>
+
+    * <b>post:</b> The average were calculated <br>
+
+    * @param nameCompany Is the name of the company we are looking for <br>
+
+    * @return String The method return a message with information of the average <br>
+    */
+
+	public String calculateSatisfactionServiceCompany(String nameCompany){
+
+		String msg = "";
+
+		for(int i = 0; i < companies.size(); i++){
+			if(companies.get(i).getNameCompany().equals(nameCompany)){
+				if(companies.get(i) instanceof ServiceCompany){
+					ServiceCompany sc = (ServiceCompany) companies.get(i);
+					if(sc.getPolls().size() >= 10 && sc.getPolls().size() <= 50){
+						msg = sc.calculateClientsSatisfaction();
+					}
+
+					else{
+						msg = "La compania debe tener más de 10 encuestas y menos de 50 para poder calcular el porcentaje de satisfaccion";
+					}
+				}
+
+				else {
+					msg = "La compañia ingresada no es de servicios, por lo tanto no requiere hacer la encuesta de satisfaccion";
+				}
+			}
+
+			else {
+				msg = "Ninguna compañia registrada coincide con el nombre ingresado";
+			}
+		}
+
+		return msg;
+	}
+
+
+	/**
+    * This method calculate proculture tax <br>
+
+    * <b>pre:</b> companies is initialized, companies != null <br>
+
+    * <b>post:</b> Proculture tax was calculated <br>
+
+    * @param nameCompany Is the name of the company we are looking for <br>
+
+    * @return String The method return a message with information of tax <br>
+    */
+
+	public String calculateProcultureTax(String nameCompany){
+
+		String msg = "";
+
+		for(int i = 0; i < companies.size(); i++){
+			if(companies.get(i).getNameCompany().equals(nameCompany)){
+				if(companies.get(i) instanceof PublicServiceCompany){
+					PublicServiceCompany psc = (PublicServiceCompany) companies.get(i);
+					msg = psc.procultureTax();
+				}
+				else if(companies.get(i) instanceof EducationCompany){
+					EducationCompany ec = (EducationCompany) companies.get(i);
+					msg = ec.procultureTax();
+				}
+
+				else {
+					msg = "La compañia no requiere pagar impuesto de procultura";
+				}
+			}
+
+			else {
+				msg = "Ninguna compañia registrada coincide con el nombre ingresado";
+			}
+		}
+
+		return msg;
+	}
+
+
+	/**
+    * This method calculate service natural resource for tree <br>
+
+    * <b>pre:</b> companies is initialized, companies != null <br>
+
+    * <b>post:</b> NaturalResourcexTree was calculate <br>
+
+    * @param nameCompany Is the name of the company we are looking for <br>
+
+    * @return String The method return a message with information of the service that was calculated <br>
+    */
+
+	public String calculateNaturalResource(String nameCompany){
+
+		String msg = "";
+
+		for (int i = 0; i < companies.size(); i++){
+			if (companies.get(i).getNameCompany().equals(nameCompany)){
+
+				if(companies.get(i) instanceof MedicineManufacturingCompany){
+					MedicineManufacturingCompany mm = (MedicineManufacturingCompany) companies.get(i);
+					msg = mm.naturalResourceXtree();
+				}
+
+				else if (companies.get(i) instanceof TecnologyCompany){
+					TecnologyCompany tc = (TecnologyCompany) companies.get(i);
+					msg = tc.naturalResourceXtree();
+				}
+
+				else{
+					msg = "La compañia no requiere pagar el servicio de recurso natural utilizado por arbol";
+				}
+			}
+
+			else{
+				msg = "Ninguna compañia registrada coincide con el nombre ingresado";
+			}	
+		}
+		return msg;
+	}  
+
 } //cierra la clase

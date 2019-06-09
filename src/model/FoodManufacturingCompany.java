@@ -1,6 +1,6 @@
 package model;
 
-public class FoodManufacturingCompany{
+public class FoodManufacturingCompany extends ManufacturingCompany{
 	
 	 //Atributos
 
@@ -16,7 +16,7 @@ public class FoodManufacturingCompany{
 
 	//Constructor
 
-	public ManufacturingCompany (String nameCompany, String nit, String correspondanceDirection, int phoneNumber, int quantityEmployees, double activeValue, String companyType, String nameLR, Time dateConstitution,
+	public FoodManufacturingCompany (String nameCompany, String nit, String correspondanceDirection, int phoneNumber, int quantityEmployees, double activeValue, String companyType, String nameLR, Time dateConstitution,
 								 String healthRegister, String status, int dueMonth, int dueYear, String mode, int eleaborationMonth, int elaborationYear, String comercialBrandName){
 		
 		super(nameCompany, nit, correspondanceDirection, phoneNumber, quantityEmployees, activeValue, companyType, nameLR, dateConstitution);

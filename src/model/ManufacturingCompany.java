@@ -20,6 +20,10 @@ public class ManufacturingCompany extends Company {
 
 	//Metodos
 
+	public void addProducts(Product product){
+		products.add(product);
+	}
+
 	/**
     * This method return the products of the company <br>
 

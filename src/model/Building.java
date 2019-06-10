@@ -75,4 +75,35 @@ public class Building{
     public void setCublicles (Cublicle[][] cublicles) {
 	     this.cublicles = cublicles;
 	}
+
+
+	public void assignCublicleEmployeeName(String employeeName) {
+		for (int i = 0; i < cublicles.length; i++) {
+			for (int j = 0; j < cublicles[i].length; j++) {
+				if (cublicles[i][j].getAvaiableCublicle() == false) {
+					cublicles[i][j].setNameEmployeed(employeeName);
+				}
+			}
+		}
+	}
+
+	public void assignCublicleEmployeeCharge(String employeeCharge) {
+		for (int i = 0; i < cublicles.length; i++) {
+			for (int j = 0; j < cublicles[i].length; j++) {
+				if (cublicles[i][j].getAvaiableCublicle() == false) {
+					cublicles[i][j].setNameEmployeed(employeeCharge);
+				}
+			}
+		}
+	}
+
+	public void assignCublicleEmployeeEmail(String employeeEmail) {
+		for (int i = 0; i < cublicles.length; i++) {
+			for (int j = 0; j < cublicles[i].length; j++) {
+				if (cublicles[i][j].getAvaiableCublicle() == false) {
+					cublicles[i][j].setNameEmployeed(employeeEmail);
+				}
+			}
+		}
+	}
 }

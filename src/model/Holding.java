@@ -59,6 +59,36 @@ public class Holding implements HaulBuilding{
 
 
 	/**
+    * This method return the building <br>
+
+    * <b>pre:</b> building is initialized, building != null <br>
+
+    * <b>post:</b> building was returned <br>
+
+    * @return String The method return the building <br>
+    */
+
+	public Building getBuilding(){
+		return building;
+	}
+
+
+	/**
+    * This method set the building <br>
+
+    * <b>pre:</b> building is initialized, building != null <br>
+
+    * <b>post:</b> building was changed <br>
+
+    * @param building Is the new building <br>
+    */
+
+	public void setBuilding(Building building){
+		this.building = building;
+	}
+
+
+	/**
     * This method search the email of an specific charge <br>
 
     * <b>pre:</b> building is initialized, building != null <br>
@@ -558,5 +588,132 @@ public class Holding implements HaulBuilding{
 		}
 		return msg;
 	}  
+
+
+
+	/**
+    * This method show the name of the companies register <br>
+
+    * <b>pre:</b> companies is initialized, companies != null <br>
+
+    * <b>post:</b> Companies name was showed <br>
+
+    * @return String The method return a message with the name of the companies register <br>
+    */
+
+	public String showActualCompanies(){
+
+		String msg = "";
+		int contador = 1;
+
+		for (int i = 0; i < companies.size(); i++){
+
+			msg += contador + "." + companies.get(i).getNameCompany() + "\n";
+			contador++;
+		}
+
+		return msg;
+	}
+
+
+	public String showTypeCompanyOptions(String type){
+
+		String typeCompany = "";
+		String AGFF = "1";
+		String EMQ = "2";
+		String MI = "3";
+		String EGS = "4";
+		String B = "5";
+		String WR = "6";
+		String TSC = "7";
+		String FS = "8";
+		String CS = "9";
+
+		if (type.equals(AGFF)) {
+			typeCompany = Company.AGRICULTURE_HUNTING_FORESTRY_FISHERIES;
+		} else if (type.equals(EMQ)) {
+			typeCompany = Company.EXPLOTATION_MINES_QUARRIES;
+		} else if (type.equals(MI)) {
+			typeCompany = Company.MANUFACTURING_INDUSTRY;
+		} else if (type.equals(EGS)) {
+			typeCompany = Company.ELECTRICITY_GAS_STEAM;
+		} else if (type.equals(B)) {
+			typeCompany = Company.CONSTRUCTION;
+		} else if (type.equals(WR)) {
+			typeCompany = Company.WHOSALE_RETAIL;
+		} else if (type.equals(TSC)) {
+			typeCompany = Company.TRANSPORTATION_STORAGE_COMMUNICATIONS;
+		} else if (type.equals(FS)) {
+			typeCompany = Company.FINANCIAL_STATEMENTS;
+		} else {
+			typeCompany = Company.COMMUNAL_SOCIAL;
+		}
+		return typeCompany;
+	}
+
+
+	public void addProductsToACompany(String nameOfCompany, String nameOfProduct, String codeOfProduct,
+			double amountOfWater, int unitsInInventory) {
+
+		boolean stop = false;
+		for (int i = 0; i < companies.size() && !stop; i++) {
+			if (companies.get(i).getNameCompany().equals(nameOfCompany)) {
+				if (companies.get(i) instanceof ManufacturingCompany
+						&& companies.get(i) instanceof MedicineManufacturingCompany) {
+
+					MedicineManufacturingCompany m = (MedicineManufacturingCompany) companies.get(i);
+					Product p = new Product(nameOfProduct, codeOfProduct, amountOfWater, unitsInInventory);
+					m.addProducts(p);
+					stop = true;
+					System.out.println("El producto " + nameOfProduct + " fue añadido a la compañia " + m.getNameCompany());
+				} else {
+					System.out.println("La compañia " + companies.get(i).getNameCompany() + " no se le pudo agregar el producto");
+					break;
+				}
+
+			}
+		}
+	}
+
+
+	public String showInformationCompanies(){
+
+		String msg = "";
+
+		for(int i = 0; i < companies.size(); i++){
+
+			msg += ("El nombre de la compañia es " + companies.get(i).getNameCompany() + "\n" +
+				    "El nit de la compañia es " + companies.get(i).getNit() + "\n" +
+				    "El numero de telefono de la compañia es " + companies.get(i).getPhoneNumber() + "\n" +
+				    "El numero de trabajadores es " + companies.get(i).getQuantityEmployees() + "\n" +
+				    "El valor de los activos de la compañia es " + companies.get(i).getActiveValue() + "\n" +
+				    "El tipo de compañia es " + companies.get(i).getCompanyType() + "\n" +
+				    "El nombre del representante legal es " + companies.get(i).getNameLR() + "\n" + "\n");
+		}
+
+		return msg;
+	}
+
+
+	public void addEmployeToACubicle(String nameOfCompany, String employeeName, String employeeEmail,
+			String employeeCharge) {
+		for (int i = 0; i < companies.size(); i++) {
+			if (companies.get(i).getNameCompany().equals(nameOfCompany)) {
+				if (companies.get(i).getBuilding() != null) {
+					companies.get(i).getBuilding().assignCublicleEmployeeName(employeeName);
+					companies.get(i).getBuilding().assignCublicleEmployeeCharge(employeeCharge);
+					companies.get(i).getBuilding().assignCublicleEmployeeEmail(employeeEmail);
+					
+
+					System.out.println("El empleado " + employeeName + " fue registrado en la compañia " + companies.get(i).getNameCompany());
+					break;
+				} else {
+					System.out.println("La compañia " + companies.get(i).getNameCompany() + " no puede registrar al empleado.");
+					break;
+				}
+
+			}
+		}
+	}
 
 } //cierra la clase

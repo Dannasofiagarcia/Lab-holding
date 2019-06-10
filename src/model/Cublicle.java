@@ -47,7 +47,7 @@ public class Cublicle{
     * @param nameEmployeed Is the new name <br>
     */
 
-    public void setNameEMployeed (String nameEmployeed) {
+    public void setNameEmployeed (String nameEmployeed) {
 	     this.nameEmployeed = nameEmployeed;
 	}
 

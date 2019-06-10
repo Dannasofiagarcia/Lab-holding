@@ -13,7 +13,7 @@ public class Product{
 
 	//Constructor
 
-	public Product (String name, String code, double waterQuantity, int unitsInventory, Invima regulatoryInformation){
+	public Product (String name, String code, double waterQuantity, int unitsInventory){
 
 		this.name = name;
 		this.code = code;

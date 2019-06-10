@@ -320,6 +320,36 @@ public abstract class Company implements HaulBuilding{
 
 
 	/**
+    * This method return the building <br>
+
+    * <b>pre:</b> building is initialized, building != null <br>
+
+    * <b>post:</b> building was returned <br>
+
+    * @return String The method return the building <br>
+    */
+
+	public Building getBuilding(){
+		return building;
+	}
+
+
+	/**
+    * This method set the building <br>
+
+    * <b>pre:</b> building is initialized, building != null <br>
+
+    * <b>post:</b> building was changed <br>
+
+    * @param building Is the new building <br>
+    */
+
+	public void setBuilding(Building building){
+		this.building = building;
+	}
+
+
+	/**
     * This method search the email of an specific charge <br>
 
     * <b>pre:</b> building is initialized, building != null <br>

@@ -99,6 +99,9 @@ public class Main {
                    int phoneNumber = reader.nextInt();
                    reader.nextLine();
 
+                   System.out.println ("Ingrese el nit de la compañia");
+                   String nit = reader.nextLine();
+
                    System.out.println ("Ingrese la cantidad de empleados que tiene la compañia");
                    int quantityEmployees = reader.nextInt();
                    reader.nextLine();
@@ -114,10 +117,9 @@ public class Main {
                                      + "6. Transporte, almacenamiento y comunicaciones \n" + "7. Estados financieros, seguros, inmuebles, servicio a companias \n"
                                      + "8. Comunales y sociales");
                    String type = reader.nextLine();
-                   typeCompany = holdingSA.showTypeCompanyOptions(type);
 
-                   System.out.println ("Ingrese el nombre del representante legal");
-                   String nameLR = reader.nextLine();
+                   String companyType ="";
+                   companyType = holdingSA.showTypeCompanyOptions(type);
 
                    System.out.println ("Ingrese el nombre del representante legal");
                    String nameLR = reader.nextLine();
@@ -144,7 +146,7 @@ public class Main {
                    System.out.println ("1. Empresa de fabricacion \n" + "2. Empresa de servicios \n" + 
                                        "3. Empresa de fabricacion de medicamentos \n" + "4. Empresa de tecnologia \n" +
                                        "5. Empresa de educacion \n" + "6. Empresa de servicios publicos \n");
-                   String optionClass  = reader.nextLine();
+                   String option  = reader.nextLine();
 
                    if(option.equals("1")){
                         ManufacturingCompany mc = new ManufacturingCompany (nameCompany, nit,  correspondanceDirection,  phoneNumber,  quantityEmployees,  activeValue,  companyType,  nameLR,  dateConstitution);
@@ -169,12 +171,14 @@ public class Main {
                         System.out.println ("1. Vigente \n" + "2. Vencido \n");
                         String statusOption = reader.nextLine();
 
+                        String status = "";
+
                         if(statusOption.equals("1")){
                               status = MedicineManufacturingCompany.CURRENT;
                         }
 
                         else if(statusOption.equals("2")){
-                              stauts = MedicineManufacturingCompany.NOT_RENEWED;
+                              status = MedicineManufacturingCompany.NOT_RENEWED;
                         }
 
                         System.out.println ("Ingrese el mes de vencimiento");
@@ -235,7 +239,7 @@ public class Main {
                         }
 
                         else if(optionService.equals("5")){
-                              service = TecnologyCompany.SOFWARE_SERVICE;
+                              service = TecnologyCompany.SOFTWARE_SERVICE;
                         }
 
                         else if(optionService.equals("6")){
@@ -271,15 +275,16 @@ public class Main {
 
                         System.out.println ("Seleccione el sector educativo");
                         System.out.println ("1. Universitario \n" + "2. Bachillerato");
-                        String optionEducationSector = reader.nextInt();
-                        reader.nextLine();
+                        String optionEducationSector = reader.nextLine();
+
+                        String educationSector ="";
 
                         if(optionEducationSector.equals("1")){
-                              educationSector = TecnologyCompany.UNIVERSITY;
+                              educationSector = EducationCompany.UNIVERSITY;
                         }
 
                         else if(optionEducationSector.equals("2")){
-                              educationSector = TecnologyCompany.HIGH_SCHOOL;
+                              educationSector = EducationCompany.HIGH_SCHOOL;
                         }
 
                         System.out.println ("Ingrese los estudiantes activos de estrato 1 y 2");
@@ -316,7 +321,7 @@ public class Main {
                                       typeService,  totalNumberOfSuscribers,  suscribers1and2);
                         holdingSA.addCompanies(psc);
                         Building building = new Building (numberOfFloors);
-                        tc.setBuilding(building);
+                        psc.setBuilding(building);
                   }
 
 
@@ -335,10 +340,11 @@ public class Main {
                   String codeProduct = reader.nextLine();
 
                   System.out.println("Ingrese la cantidad de agua que necesita el producto");
-                  double water = reader.nextLine();
+                  double water = reader.nextDouble();
+                  reader.nextLine();
 
                   System.out.println("Ingrese el numero de unidades del producto");
-                  int unitsInventory = input.nextInt();
+                  int unitsInventory = reader.nextInt();
 
                   holdingSA.addProductsToACompany(nameOfCompany, nameProduct, codeProduct, water, unitsInventory);
             
@@ -348,7 +354,7 @@ public class Main {
 
                   System.out.println("Seleccione a cual de las siguientes compañias desea calcularle el impuesto procultura. Escriba el nombre");
                   System.out.println(holdingSA.showActualCompanies());
-                  String nameOfCompany = reader.nextLine();
+                  nameOfCompany = reader.nextLine();
                   holdingSA.calculateProcultureTax(nameOfCompany);
             break;
 
@@ -356,7 +362,7 @@ public class Main {
 
                   System.out.println("Seleccione a cual de las siguientes compañias desea calcularle el servicio recurso natural por arbol. Escriba el nombre");
                   System.out.println(holdingSA.showActualCompanies());
-                  String nameOfCompany = reader.nextLine();
+                  nameOfCompany = reader.nextLine();
                   holdingSA.calculateNaturalResource(nameOfCompany);
             
 
@@ -364,7 +370,7 @@ public class Main {
 
                   System.out.println("Seleccione a cual de las siguientes compañias desea registrarle la encuesta. Escriba el nombre");
                   System.out.println(holdingSA.showActualCompanies());
-                  String nameOfCompany = reader.nextLine();
+                  nameOfCompany = reader.nextLine();
 
                   System.out.println("1.En una escala del 1 al 5, siendo 1 no satisfecho y 5 muy satisfecho califique el servicio prestado");
                   int answer1 = reader.nextInt();
@@ -386,7 +392,7 @@ public class Main {
 
                   System.out.println("Seleccione a cual de las siguientes compañias desea registrarle la encuesta. Escriba el nombre");
                   System.out.println(holdingSA.showActualCompanies());
-                  String nameOfCompany = reader.nextLine();
+                  nameOfCompany = reader.nextLine();
                   holdingSA.calculateSatisfactionServiceCompany(nameOfCompany);
             break;
 
@@ -394,7 +400,7 @@ public class Main {
 
                   System.out.println("Seleccione a cual de las siguientes compañias desea buscar la extension del empleado. Escriba el nombre");
                   System.out.println(holdingSA.showActualCompanies());
-                  String nameOfCompany = reader.nextLine();
+                  nameOfCompany = reader.nextLine();
 
                   System.out.println("Ingrese el nombre del empleado");
                   String nameEmployeed = reader.nextLine();
@@ -429,7 +435,7 @@ public class Main {
 
                   System.out.println("Seleccione a cual de las siguientes compañias desea buscar la extension del empleado. Escriba el nombre");
                   System.out.println(holdingSA.showActualCompanies());
-                  String nameOfCompany = reader.nextLine();
+                  nameOfCompany = reader.nextLine();
 
                   System.out.println("Ingrese el cargo del empleado");
                   String chargeEmployeed = reader.nextLine();
@@ -444,6 +450,10 @@ public class Main {
 
             case 10:
 
+                  System.out.println("Seleccione a cual de las siguientes compañias desea aregarle un empleado. Escriba el nombre");
+                  System.out.println(holdingSA.showActualCompanies());
+                  nameOfCompany = reader.nextLine();
+
                   System.out.println("Ingrese el nombre del empleado");
                   String name=reader.nextLine();
 
@@ -453,7 +463,7 @@ public class Main {
                   System.out.println("Ingrese el correo del empleado");
                   String email=reader.nextLine();
 
-                  holdingSA.addEmployeToACubicle(name, carge, email);
+                  holdingSA.addEmployeToACubicle(nameOfCompany,name, carge, email);
             break;
 
 }}}}
